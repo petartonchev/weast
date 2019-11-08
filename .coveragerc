@@ -1,0 +1,5 @@
+[run]
+include = stock_sentiment_web_app/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
