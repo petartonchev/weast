@@ -28,7 +28,7 @@ To setup the project:
      ```bash
     docker-compose -f local.yml up
     ```
-    **Note:** The next time you want to star the web application you should execute this step only.
+    **Note:** The next time you want to start the web application you should execute this step only.
     
 ## Executing Commands from Docker:
 
