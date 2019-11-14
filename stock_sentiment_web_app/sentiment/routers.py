@@ -18,7 +18,7 @@ class SentimentRouter:
     def allow_migrate(self, db, app_label, model_name=None, **hints):
         if app_label == 'sentiment':
             return db == self.database
-        elif db == database:
+        elif db == self.database:
             # Ensure that all other apps don't get migrated on this database.
             return False
         return None
