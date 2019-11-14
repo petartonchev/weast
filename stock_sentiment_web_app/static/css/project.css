@@ -11,3 +11,13 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.emoji {
+  width: 100px;
+  height: 100px;
+}

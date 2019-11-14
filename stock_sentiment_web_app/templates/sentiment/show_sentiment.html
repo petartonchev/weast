@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="col-md-10 text-center mt-5 mx-auto">
+    <div class="card m-3">
+      <div class="card-header">
+        Sentiment:
+      </div>
+      <div class="card-body">
+        <h2>The sentiment of {{ ticker }} is {{ sentiment }}</h2>
+        {% if sentiment > 0.3 %}
+          <img class="emoji m-3" src="/static/images/positive.png" alt="">
+        {% elif sentiment > -0.3 %}
+          <img class="emoji m-3" src="/static/images/neutral.png" alt="">
+        {% else %}
+          <img class="emoji m-3" src="/static/images/negative.png" alt="">
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="card m-3 mb-3">
+      <div class="card-header">
+        Tweets:
+      </div>
+      <div class="card-body">
+        {% for tweet in tweets|dictsortreversed:"retweet_count" %}
+          <div class="card m-3">
+            <div class="card-header">
+              <div class="row">
+                <div class="col">
+                  <div class="text-dark p-1 font-weight-bold">
+                    {{ tweet.user_name|capfirst }}
+
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+            <div class="card-body bg-dark text-white">
+              <div class="row mb-4">
+                <div class="col-md-6 text-left">
+                  {{ tweet.created_at.date}}
+
+                </div>
+                <div class="col-md-6 text-right">
+                  Retweets: {{ tweet.retweet_count }}
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col text-left ">
+                  {{ tweet.text }}
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
