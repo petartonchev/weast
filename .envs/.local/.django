@@ -2,3 +2,10 @@
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
+
+MONGO_HOST=mongodb
+MONGO_PORT=27017
+MONGO_DB=moodstock_nosql_db
+MONGO_USER=debug
+MONGO_PASSWORD=debug
+
