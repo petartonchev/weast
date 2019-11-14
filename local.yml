@@ -3,6 +3,7 @@ version: '3'
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
+  local_mongo_data: {}
 
 services:
   django:
@@ -12,6 +13,7 @@ services:
     image: stock_sentiment_web_app_local_django
     depends_on:
       - postgres
+      - mongo
     volumes:
       - .:/app
     env_file:
@@ -33,3 +35,13 @@ services:
       - local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+
+  mongo:
+    image: mongo
+    container_name: 'mongodb'
+    env_file:
+      - ./.envs/.local/.mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - local_mongo_data:/data/db

@@ -74,6 +74,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "stock_sentiment_web_app.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "stock_sentiment_web_app.sentiment.apps.SentimentConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

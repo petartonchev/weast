@@ -329,4 +329,4 @@ stock_sentiment_web_app/media/
 .ipython/
 .env
 .envs/*
-!.envs/.local/
+!.envs/.example/
