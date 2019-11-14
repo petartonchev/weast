@@ -41,9 +41,19 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {
+    "default": env.db("DATABASE_URL"),
+    "moodstock_nosql_db": {
+        "ENGINE": 'djongo',
+        'NAME':  env("MONGO_DB"),
+        'HOST': env("MONGO_HOST"),
+        'PORT': int(env("MONGO_PORT")),
+        'USER': env("MONGO_USER"),
+        'PASSWORD': env("MONGO_PASSWORD"),
+    }
+}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
-
+DATABASE_ROUTERS = ['stock_sentiment_web_app.sentiment.routers.SentimentRouter']
 # URLS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
@@ -232,7 +242,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -244,7 +254,6 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
-
 
 # django-allauth
 # ------------------------------------------------------------------------------
