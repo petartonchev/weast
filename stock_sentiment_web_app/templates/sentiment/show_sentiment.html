@@ -6,7 +6,7 @@
         Sentiment:
       </div>
       <div class="card-body">
-        <h2>The sentiment of {{ ticker }} is {{ sentiment }}</h2>
+        <h2>The sentiment of {{ stock }} is {{ sentiment }}</h2>
         {% if sentiment > 0.3 %}
           <img class="emoji m-3" src="/static/images/positive.png" alt="">
         {% elif sentiment > -0.3 %}
@@ -23,17 +23,16 @@
         Tweets:
       </div>
       <div class="card-body">
-        {% for tweet in tweets|dictsortreversed:"retweet_count" %}
+        {% for tweet in tweets|dictsortreversed:"retweets" %}
           <div class="card m-3">
             <div class="card-header">
               <div class="row">
                 <div class="col">
                   <div class="text-dark p-1 font-weight-bold">
-                    {{ tweet.user_name|capfirst }}
+                    {{ tweet.username|capfirst }}
 
                   </div>
                 </div>
-
 
               </div>
 
@@ -41,11 +40,11 @@
             <div class="card-body bg-dark text-white">
               <div class="row mb-4">
                 <div class="col-md-6 text-left">
-                  {{ tweet.created_at.date}}
+                  {{ tweet.created_at|date:"d, M, Y P"}}
 
                 </div>
                 <div class="col-md-6 text-right">
-                  Retweets: {{ tweet.retweet_count }}
+                  Retweets: {{ tweet.retweets }}
                 </div>
 
               </div>

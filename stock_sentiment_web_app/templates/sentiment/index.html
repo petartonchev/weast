@@ -4,15 +4,11 @@
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-        {% if selected_ticker %}
-          {{ selected_ticker }}
-        {% else %}
-           Select a stock
-        {% endif %}
+        Select a stock
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {% for ticker in tickers %}
-            <a class="dropdown-item" href="{% url 'sentiment:get_stock_sentiment' ticker %}">{{ ticker }}</a>
+          {% for stock in stocks %}
+            <a class="dropdown-item" href="{% url 'sentiment:get_stock_sentiment' stock.id %}">{{ stock }}</a>
           {% endfor %}
       </div>
     </div>
