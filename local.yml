@@ -3,7 +3,6 @@ version: '3'
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
-  local_mongo_data: {}
 
 services:
   django:
@@ -13,7 +12,6 @@ services:
     image: stock_sentiment_web_app_local_django
     depends_on:
       - postgres
-      - mongodb
     volumes:
       - .:/app
     env_file:
@@ -35,16 +33,3 @@ services:
       - local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
-
-  mongodb:
-    image: mongo
-    restart: always
-    volumes:
-      - ./compose/local/mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
-      - local_mongo_data:/data/db
-    environment:
-      - MONGO_INITDB_DATABASE=moodstock_nosql_db
-      - MONGO_INITDB_ROOT_USERNAME=debug
-      - MONGO_INITDB_ROOT_PASSWORD=debug
-    ports:
-      - "27017:27017"
