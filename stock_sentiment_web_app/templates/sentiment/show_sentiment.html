@@ -6,7 +6,7 @@
         Sentiment:
       </div>
       <div class="card-body">
-        <h2>The sentiment of {{ stock }} is {{ sentiment }}</h2>
+        <h2>The sentiment of {{ stock }} is {{ sentiment|floatformat:"2"  }}</h2>
         {% if sentiment > 0.3 %}
           <img class="emoji m-3" src="/static/images/positive.png" alt="">
         {% elif sentiment > -0.3 %}
