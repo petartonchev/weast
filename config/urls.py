@@ -5,11 +5,14 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+import stock_sentiment_web_app.sentiment.views as sentiment_views
+
 urlpatterns = [
     path("", include("stock_sentiment_web_app.sentiment.urls")),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+    path(settings.ADMIN_URL+"/scrape", sentiment_views.scrape_data, name='scrape_data'),
     # User management
     path("users/", include("stock_sentiment_web_app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),

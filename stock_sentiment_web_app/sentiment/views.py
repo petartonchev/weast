@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Avg
-from django.http import HttpResponse
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect
+
+from stock_sentiment_web_app.utils.decorators import superuser_only
 from .models import Stock, Tweet
 import time
 from .scrapers import TwitterScraper
@@ -24,3 +27,9 @@ def get_stock_sentiment(request, stock_id):
                'stock': stock,
                'tweets': tweets}
     return render(request, 'sentiment/show_sentiment.html', context)
+
+@superuser_only
+def scrape_data(request):
+    TwitterScraper().scrape_for_db_stocks()
+    messages.add_message(request, messages.INFO, "Scrape completed")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
