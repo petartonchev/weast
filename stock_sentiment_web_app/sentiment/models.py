@@ -17,5 +17,8 @@ class Tweet(models.Model):
     sentiment = models.FloatField()
     stocks = models.ManyToManyField(Stock)
 
+    # Stores the tweet id from twitter
+    tweet_id = models.CharField(max_length=255, null=True)
+
     def __str__(self):
         return self.text
