@@ -28,7 +28,7 @@ class TwitterScraper:
                 'text': tweet.full_text,
                 'tweet_id': tweet.id_str,
                 'created_at': tweet.created_at,
-                'username': tweet.user.name.encode('utf-8', errors='ignore'),
+                'username': tweet.user.name,
                 'retweets': tweet.retweet_count,
                 'sentiment': TextBlob(tweet.full_text).sentiment.polarity
             }
