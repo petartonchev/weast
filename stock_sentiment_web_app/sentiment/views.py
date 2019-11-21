@@ -24,9 +24,3 @@ def get_stock_sentiment(request, stock_id):
                'stock': stock,
                'tweets': tweets}
     return render(request, 'sentiment/show_sentiment.html', context)
-
-
-def test_scraper(request):
-    scraper = TwitterScraper()
-
-    return HttpResponse(scraper.scrape_for_db_stocks())
