@@ -7,7 +7,18 @@ from .models import Tweet,Stock
 
 @admin.register(Stock)
 class StockAdmin(admin.ModelAdmin):
+    list_display = ['ticker', 'company']
     change_list_template = "sentiment/stock_changelist.html"
 
 
-admin.site.register([Tweet])
+@admin.register(Tweet)
+class TweetAdmin(admin.ModelAdmin):
+    list_display = ['text', 'sentiment', 'retweets', 'created_at', 'stocks_display']
+
+    def stocks_display(self, obj):
+        return ", ".join([
+            stock.ticker for stock in obj.stocks.all()
+        ])
+
+    list_per_page = 5
+    stocks_display.short_description = "Stocks"
