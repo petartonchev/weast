@@ -9,6 +9,17 @@ class Stock(models.Model):
         return self.company + '(' + self.ticker + ')'
 
 
+# An SQL View to aggregate the stocks data
+class StockSummary(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    stock = models.ForeignKey(Stock, on_delete=models.DO_NOTHING)
+    avg_sentiment = models.FloatField()
+
+    class Meta:
+        managed = False # tell Django to don't try creating db schema migration for this model
+        db_table = 'sentiment_stock_summary'
+
+
 class Tweet(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(blank=True)
