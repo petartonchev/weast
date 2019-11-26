@@ -1,6 +1,4 @@
-from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
-
 from stock_sentiment_web_app.sentiment.scrapers import TwitterScraper
 
 
