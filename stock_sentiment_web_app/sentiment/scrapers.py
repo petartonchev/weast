@@ -55,7 +55,7 @@ class TwitterScraper:
 
     def get_stocks_from_tweet_symbols(self, symbols):
         # get the text of the symbols only
-        symbols = map(operator.itemgetter('text'), symbols)
+        symbols = map(lambda symbol: symbol['text'].upper(), symbols)
 
         return self.stocks.filter(ticker__in=symbols)
 
