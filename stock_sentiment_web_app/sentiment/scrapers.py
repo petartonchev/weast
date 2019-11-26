@@ -60,6 +60,9 @@ class TwitterScraper:
         return self.stocks.filter(ticker__in=symbols)
 
     def save_tweet(self, stocks, tweet_data):
+        # Don't save the tweet if for some reason no stocks are associated with it.
+        if not stocks:
+            return
 
         tweet = Tweet(**tweet_data)
         try:
