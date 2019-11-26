@@ -20,5 +20,10 @@ class Tweet(models.Model):
     # Stores the tweet id from twitter
     tweet_id = models.CharField(max_length=255, null=True)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['tweet_id'], name="unique-tweets")
+        ]
+
     def __str__(self):
         return self.text
