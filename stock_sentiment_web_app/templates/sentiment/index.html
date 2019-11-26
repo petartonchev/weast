@@ -1,16 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="col-md-6 text-center mt-5 mx-auto">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-        Select a stock
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {% for stock in stocks %}
-            <a class="dropdown-item" href="{% url 'sentiment:get_stock_sentiment' stock.id %}">{{ stock }}</a>
-          {% endfor %}
+  <div class="row">
+    <div class="col-md-6 single-stock mx-auto mt-5">
+      <div class="col-md-10">
+        <h1 class="display-4 text-light text-center">Evaluate the sentiment of a stock</h1>
+        <div class="card small bg-light  shadow rounded mt-5 border-0">
+          <div class="card-header pt-3 border-0">
+            <div class="lead text-dark ">Select a stock:</div>
+
+          </div>
+
+          <div class="list-group rounded">
+            {% for stock in stocks %}
+              <a href="{% url 'sentiment:get_stock_sentiment' stock.id %}"
+                 class="list-group-item list-group-item-action">{{ stock }}</a>
+            {% endfor %}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-6 text-center mt-5 mx-auto portfolio">
+      <div class="col-md-10 float-right">
+        <div class="card small bg-light  shadow rounded-lg mb-5 border-0">
+           <div class="card-header pt-3 border-0">
+            <div class="lead text-dark text-left align-middle">Create a portfolio:</div>
+
+          </div>
+          <h1 class="display-4 text-muted text-center m-auto">Soon</h1>
+        </div>
+
+        <h1 class="display-4 text-light text-center">Check the overall sentiment of your portfolio</h1>
+
       </div>
     </div>
   </div>
+
 {% endblock content %}

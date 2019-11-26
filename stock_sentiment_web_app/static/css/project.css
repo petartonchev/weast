@@ -1,4 +1,38 @@
 /* These styles are generated from project.scss. */
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+:root {
+  --primary-color: #55ADED;
+  --accent-color: #FF9900;
+}
+
+#background {
+
+  background-image: linear-gradient(to bottom, rgba(85, 173, 237, 0.8), rgb(0, 33, 58)),
+  url('/static/images/background.jpg');
+
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: fixed;
+}
+
+.content {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.show-sentiment {
+  height: calc(100vh - 150px);
+  overflow: hidden;
+  display: flex;
+}
+
+.show-sentiment div.col-md-6, .show-sentiment div.card, .charts {
+  height: 100%;
+}
 
 .alert-debug {
   color: black;
@@ -11,13 +45,78 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
-.abs-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 .emoji {
   width: 100px;
   height: 100px;
+  display: block;
+}
+
+.logo {
+  width: 140px;
+}
+
+.color-primary {
+  color: var(--primary-color) !important;
+}
+
+.color-accent {
+  color: var(--accent-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-accent {
+  background-color: var(--accent-color) !important;
+}
+
+.display-6 {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.display-7 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.single-stock .card, .portfolio .card {
+  height: 40vh;
+}
+
+.single-stock .card .list-group {
+  overflow: auto;
+}
+
+.card-header {
+  background: linear-gradient(to bottom right, #f3df8e, #FF9900);
+  height: 70px;
+}
+
+.tweets > .card > .card-body {
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+}
+
+.charts > .card-body {
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+}
+
+.tweets .info {
+  line-height: 32px;
+}
+
+.tweets .divider {
+  border-color: #6c757d;
+}
+
+.tweets .row:last-child .divider {
+  border: none !important;
 }

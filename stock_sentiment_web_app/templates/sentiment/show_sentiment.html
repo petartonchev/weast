@@ -1,63 +1,93 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="col-md-10 text-center mt-5 mx-auto">
-    <div class="card m-3">
-      <div class="card-header">
-        Sentiment:
+  <div class="row show-sentiment">
+    <div class="col-md-6 mt-4 float-left">
+      <div class="col-md-12">
+        <h1 class="display-6 text-light text-center mt-5">{{ stock }}</h1>
       </div>
-      <div class="card-body">
-        <h2>The sentiment of {{ stock }} is {{ sentiment|floatformat:"2"  }}</h2>
+      <div class="col-md-12 pt-2">
         {% if sentiment > 0.3 %}
-          <img class="emoji m-3" src="/static/images/positive.png" alt="">
+          <img class="emoji m-3 mx-auto" src="/static/images/positive.png" alt="">
         {% elif sentiment > -0.3 %}
-          <img class="emoji m-3" src="/static/images/neutral.png" alt="">
+          <img class="emoji m-3 float-center mx-auto" src="/static/images/neutral.png" alt="">
         {% else %}
-          <img class="emoji m-3" src="/static/images/negative.png" alt="">
+          <img class="emoji m-3 align-middle mx-auto" src="/static/images/negative.png" alt="">
         {% endif %}
       </div>
-
-    </div>
-
-    <div class="card m-3 mb-3">
-      <div class="card-header">
-        Tweets:
+     <div class="col-md-12">
+        <h1 class="display-7 text-light text-center mt-5">Overall sentiment: {{ sentiment|floatformat:"2" }}</h1>
       </div>
-      <div class="card-body">
-        {% for tweet in tweets|dictsortreversed:"retweets" %}
-          <div class="card m-3">
-            <div class="card-header">
-              <div class="row">
-                <div class="col">
-                  <div class="text-dark p-1 font-weight-bold">
-                    {{ tweet.username|capfirst }}
+      <div class="col-md-12 pt-4 charts">
+        <div class="card small bg-light  shadow rounded mt-5 border-0 ">
+          <div class="card-header border-0 pt-3 lead text-dark">
 
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-            <div class="card-body bg-dark text-white">
-              <div class="row mb-4">
-                <div class="col-md-6 text-left">
-                  {{ tweet.created_at|date:"d, M, Y P"}}
-
-                </div>
-                <div class="col-md-6 text-right">
-                  Retweets: {{ tweet.retweets }}
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col text-left ">
-                  {{ tweet.text }}
-
-                </div>
-              </div>
-            </div>
           </div>
+          <div class="card-body">
+            <h1 class="display-4 text-muted text-center m-auto">More Information Soon</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 tweets mt-4 float-right">
 
-        {% endfor %}
+      <div class="card small bg-light  shadow rounded mt-5 border-0">
+        <div class="card-header border-0 pt-3 lead text-dark">
+          Tweets:
+        </div>
+        <div class="card-body">
+          {% for tweet in tweets|dictsortreversed:"retweets" %}
+            <div class="row ">
+              <div class="col-md-6">
+                <p class="lead text-muted">{{ tweet.username|capfirst }}</p>
+              </div>
+              <div class="col-md-6">
+                <p class="text-muted float-right info">Sentiment: {{ tweet.sentiment|floatformat:"2" }}</p>
+              </div>
+              <div class="col-md-12 pb-2">
+                {{ tweet.text }}
+              </div>
+              <div class="col-md-6">
+                <p class="text-muted info mb-0">Retweets: {{ tweet.retweets }}</p>
+              </div>
+              <div class="col-md-6 pb-1">
+                <p class="text-muted float-right info mb-0">{{ tweet.created_at|date:"d, M, Y P" }}</p>
+              </div>
+              <div class="col-md-12 mb-4 divider border-bottom"></div>
+            </div>
+            {#            <div class="card m-3">#}
+            {#              <div class="card-header">#}
+            {#                <div class="row">#}
+            {#                  <div class="col">#}
+            {#                    <div class="text-dark p-1 font-weight-bold">#}
+            {#                      {{ tweet.username|capfirst }}#}
+            {##}
+            {#                    </div>#}
+            {#                  </div>#}
+            {##}
+            {#                </div>#}
+            {##}
+            {#              </div>#}
+            {#              <div class="card-body bg-dark text-white">#}
+            {#                <div class="row mb-4">#}
+            {#                  <div class="col-md-6 text-left">#}
+            {##}
+            {#                  </div>#}
+            {#                  <div class="col-md-6 text-right">#}
+            {#                    Retweets: {{ tweet.retweets }}#}
+            {#                  </div>#}
+            {##}
+            {#                </div>#}
+            {#                <div class="row">#}
+            {#                  <div class="col text-left ">#}
+            {#                    #}
+            {##}
+            {#                  </div>#}
+            {#                </div>#}
+            {#              </div>#}
+            {#            </div>#}
+
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
