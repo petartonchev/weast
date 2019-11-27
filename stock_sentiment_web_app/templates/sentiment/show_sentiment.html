@@ -6,9 +6,9 @@
         <h1 class="display-6 text-light text-center mt-5">{{ stock }}</h1>
       </div>
       <div class="col-md-12 pt-2">
-        {% if sentiment > 0.3 %}
+        {% if sentiment >= 0.15 %}
           <img class="emoji m-3 mx-auto" src="/static/images/positive.png" alt="">
-        {% elif sentiment > -0.3 %}
+        {% elif sentiment > -0.15 %}
           <img class="emoji m-3 float-center mx-auto" src="/static/images/neutral.png" alt="">
         {% else %}
           <img class="emoji m-3 align-middle mx-auto" src="/static/images/negative.png" alt="">
