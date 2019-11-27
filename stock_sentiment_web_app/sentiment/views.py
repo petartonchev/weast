@@ -21,12 +21,13 @@ def index(request):
 def get_stock_sentiment(request, stock_id):
     stock = Stock.objects.get(pk=stock_id)
     tweets = stock.tweet_set.all()
-    sentiment = tweets.aggregate(Avg('sentiment'))
+    stock_summary = stock.stocksummary_set.get()
 
-    context = {'sentiment': sentiment['sentiment__avg'],
+    context = {'sentiment': stock_summary.avg_sentiment,
                'stock': stock,
                'tweets': tweets}
     return render(request, 'sentiment/show_sentiment.html', context)
+
 
 @superuser_only
 def scrape_data(request):
