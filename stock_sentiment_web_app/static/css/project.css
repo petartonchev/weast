@@ -24,7 +24,7 @@
   height: 100%;
 }
 
-.show-sentiment {
+.show-sentiment, .home {
   height: calc(100vh - 150px);
   overflow: hidden;
   display: flex;
@@ -85,7 +85,7 @@
 }
 
 .single-stock .card, .portfolio .card {
-  height: 40vh;
+  height: 300px;
 }
 
 .single-stock .card .list-group {
