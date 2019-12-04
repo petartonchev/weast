@@ -14,9 +14,10 @@ class StockSummary(models.Model):
     id = models.BigIntegerField(primary_key=True)
     stock = models.ForeignKey(Stock, on_delete=models.DO_NOTHING)
     avg_sentiment = models.FloatField()
+    date = models.DateTimeField()
 
     class Meta:
-        managed = False # tell Django to don't try creating db schema migration for this model
+        managed = False  # tell Django to don't try creating db schema migration for this model
         db_table = 'sentiment_stock_summary'
 
 

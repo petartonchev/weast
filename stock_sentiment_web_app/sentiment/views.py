@@ -21,7 +21,7 @@ def index(request):
 def get_stock_sentiment(request, stock_id):
     stock = Stock.objects.get(pk=stock_id)
     tweets = stock.tweet_set.all()
-    stock_summary = stock.stocksummary_set.get()
+    stock_summary = stock.stocksummary_set.latest('date')
 
     context = {'sentiment': stock_summary.avg_sentiment,
                'stock': stock,
