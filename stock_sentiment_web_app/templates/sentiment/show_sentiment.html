@@ -14,7 +14,7 @@
           <img class="emoji m-3 align-middle mx-auto" src="/static/images/negative.png" alt="">
         {% endif %}
       </div>
-     <div class="col-md-12">
+      <div class="col-md-12">
         <h1 class="display-7 text-light text-center mt-5">Overall sentiment: {{ sentiment|floatformat:"2" }}</h1>
       </div>
       <div class="col-md-12 pt-4 charts">
@@ -23,7 +23,7 @@
 
           </div>
           <div class="card-body">
-            <h1 class="display-4 text-muted text-center m-auto">More Information Soon</h1>
+            <div id="test"></div>
           </div>
         </div>
       </div>
@@ -59,5 +59,102 @@
       </div>
     </div>
   </div>
+  <script>
+    Highcharts.chart('test', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Real Stock Price vs Sentiment over Time'
+      },
+      subtitle: {
+        text: document.ontouchstart === undefined ?
+          'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: [{ // Primary yAxis
+        labels: {
+          format: '{value}$',
+          style: {
+            color: Highcharts.getOptions().colors[0]
+          }
+        },
+        title: {
+          text: 'Adj Close',
+          style: {
+            color: Highcharts.getOptions().colors[0]
+          }
+        }
+      }, { // Secondary yAxis
+        max: 1,
+        min: -1,
+        endOnTick: false,
+        title: {
+          text: 'Sentiment',
+          style: {
+            color: '#4c9d49'
+          }
+        },
+        labels: {
+          style: {
+            color: '#4c9d49'
+          }
+        },
+        opposite: true
+      }],
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        },
+        column: {
 
+          opacity: 0.7,
+          zones: [{
+            value: 0,
+            color: '#f60239'
+          }, {
+            color: '#4c9d49'
+          }]
+        }
+      },
+
+      series: [{
+        type: 'area',
+        name: 'USD to EUR',
+        data: {{ price_trend }}
+      }, {
+        type: 'column',
+        name: 'Twitter Sentiment',
+        yAxis: 1,
+        data: {{ sentiment_trend }}
+      }]
+    });
+
+  </script>
 {% endblock content %}
