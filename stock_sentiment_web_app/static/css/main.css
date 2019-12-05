@@ -23,13 +23,13 @@
   height: 100%;
 }
 
-.home {
-  height: calc(100vh - 150px);
+.home, .show-sentiment {
+  height: calc(100vh - 120px);
   overflow: hidden;
   display: flex;
 }
 
-.show-sentiment div.col-md-6, .show-sentiment div.card, .charts {
+.show-sentiment div.card, .charts, .tweets > div {
   height: 100%;
 }
 
@@ -74,7 +74,7 @@
 .display-6 {
   font-size: 3rem;
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 110px;
 }
 
 .display-7 {
@@ -118,4 +118,19 @@
 
 .tweets .row:last-child .divider {
   border: none !important;
+}
+
+#sentiment-chart {
+  max-width: 800px;
+  height: 110px;
+}
+.hc-cat-title {
+  font-size: 13px;
+  font-weight: bold;
+}
+.h-150px {
+  height: 150px!important;
+}
+.h-100-150px {
+  height: calc(100% - 150px) !important;
 }
