@@ -63,7 +63,7 @@
         <div class="col-md-12 h-50 pt-4">
           <div class="card small h-100 bg-light  shadow rounded border-0 ">
             <div class="card-body h-100">
-              <div id="trend-chart1" class="h-100"></div>
+              <div id="perc-change-chart" class="h-100"></div>
             </div>
           </div>
         </div>
@@ -94,9 +94,41 @@
           })
         }
 
+        let sentiment_data = {{ sentiment_trend }};
+        let sentiment_lookup = {};
+        let i;
+        for (i = 0; i < sentiment_data.length; i++) {
+          let date, sentiment;
+          [date, sentiment] = sentiment_data[i];
+          date = new Date(date);
+          // Set hours to the close time of the stock market
+          date.setHours(6, 0, 0, 0);
+          // Convert back to timestamp
+          date = date.getTime();
+          sentiment_lookup[date] = sentiment;
+        };
+
 
         fetchPriceData().then(function (price_data) {
-          console.log(price_data);
+
+          let perc_change = [];
+          let i;
+          for (i = 1; i < price_data.length; i++) {
+            let curr_date, curr_price;
+            [curr_date, curr_price] = price_data[i];
+
+            let date = new Date(curr_date);
+            let price_yesterday = price_data[i - 1][1];
+
+            let curr_perc_change = (curr_price - price_yesterday) / price_yesterday * 100
+            perc_change.push({
+              x: curr_date,
+              y: curr_perc_change,
+              sentiment: sentiment_lookup[curr_date]})
+          }
+
+          console.log(perc_change)
+
           Highcharts.chart('trend-chart', {
             chart: {
               zoomType: 'x',
@@ -184,7 +216,7 @@
 
             series: [{
               type: 'area',
-              name: 'USD to EUR',
+              name: 'Adj Close',
               data: price_data
             }, {
               type: 'column',
@@ -193,13 +225,26 @@
               data: {{ sentiment_trend }}
             }]
           });
-          Highcharts.chart('trend-chart1', {
+          Highcharts.chart('perc-change-chart', {
             chart: {
               zoomType: 'x',
               backgroundColor: 'transparent'
             },
+            colorAxis: {
+              min: -1,
+              max: 1,
+              dataClasses: [{
+                from: -1,
+                to: 0,
+                color: '#f60239'
+              }, {
+                from: 0,
+                to: 1,
+                color: '#4c9d49'
+              }]
+            },
             title: {
-              text: 'Real Stock Price vs Sentiment over Time'
+              text: 'Percentage Change in Stock Price vs Sentiment over Time'
             },
             subtitle: {
               text: document.ontouchstart === undefined ?
@@ -210,84 +255,38 @@
             },
             yAxis: [{ // Primary yAxis
               labels: {
-                format: '{value}$',
+                format: '{value}%',
                 style: {
                   color: Highcharts.getOptions().colors[0]
                 }
               },
               title: {
-                text: 'Adj Close',
+                text: 'Percentage Change',
                 style: {
                   color: Highcharts.getOptions().colors[0]
                 }
               }
-            }, { // Secondary yAxis
-              max: 1,
-              min: -1,
-              endOnTick: false,
-              title: {
-                text: 'Sentiment',
-                style: {
-                  color: '#4c9d49'
-                }
-              },
-              labels: {
-                style: {
-                  color: '#4c9d49'
-                }
-              },
-              opposite: true
             }],
             legend: {
               enabled: false
             },
             plotOptions: {
-              area: {
-                fillColor: {
-                  linearGradient: {
-                    x1: 0,
-                    y1: 0,
-                    x2: 0,
-                    y2: 1
-                  },
-                  stops: [
-                    [0, Highcharts.getOptions().colors[0]],
-                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                  ]
-                },
-                marker: {
-                  radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                  hover: {
-                    lineWidth: 1
-                  }
-                },
-                threshold: null
-              },
               column: {
-
-                opacity: 0.7,
-                zones: [{
-                  value: 0,
-                  color: '#f60239'
-                }, {
-                  color: '#4c9d49'
-                }]
+                opacity: 0.7
               }
             },
 
             series: [{
-              type: 'area',
-              name: 'USD to EUR',
-              data: price_data
-            }, {
               type: 'column',
-              name: 'Twitter Sentiment',
-              yAxis: 1,
-              data: {{ sentiment_trend }}
-            }]
+              name: 'Percentage Change',
+              data: perc_change,
+              colorKey: 'sentiment',
+              color: 'grey',
+            }],
+            tooltip: {
+              pointFormat: '<b>Sentiment: {point.sentiment}</b><br><b>Percentage Change: {point.y}%</b>',
+              valueDecimals: 2
+            }
           });
           Highcharts.setOptions({
             chart: {
@@ -364,7 +363,8 @@
               pointFormat: '<b>Sentiment: {point.y}</b>',
               valueDecimals: 2
             }
-          })
+          });
+
         });
       }
     }
