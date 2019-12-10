@@ -55,27 +55,23 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
           <a class="nav-link" href="{% url 'sentiment:index' %}">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == '/accounts/logout/' %}active{% endif %}">
             {# URL provided by django-allauth/account/urls.py #}
             <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
           </li>
         {% else %}
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == '/accounts/signup/' %}active{% endif %}">
             {# URL provided by django-allauth/account/urls.py #}
             <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == '/accounts/login/' %}active{% endif %}">
             {# URL provided by django-allauth/account/urls.py #}
             <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
           </li>
