@@ -4,7 +4,7 @@ from stock_sentiment_web_app.sentiment.scrapers import TwitterScraper
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(start_tweet_scraper, 'interval', days=1)
+    scheduler.add_job(start_tweet_scraper, 'interval', hours=1)
     scheduler.start()
 
 
