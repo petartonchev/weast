@@ -2,9 +2,17 @@
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    {% block inner %}{% endblock %}
+  <div class="row">
+    <div class="col-md-4 col-sm-8 col-xs-12 m-auto pt-5">
+      <div class="card h-100 small bg-light  shadow rounded border-0 ">
+
+        <div class="card-header pt-3 border-0">
+          <div class="lead text-dark ">{% block card_header %}{% endblock %}</div>
+        </div>
+        <div class="card-body h-100">
+          {% block inner %}{% endblock %}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 {% endblock %}

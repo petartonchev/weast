@@ -134,3 +134,7 @@
 .h-100-150px {
   height: calc(100% - 150px) !important;
 }
+.btn-primary {
+  background-color: #02375f!important;
+  border-color: #02375f!important;
+}
