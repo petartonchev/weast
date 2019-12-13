@@ -18,6 +18,13 @@
   position: fixed;
 }
 
+#hp-bg {
+  background-image: url('/static/images/home-page-bg.jpg');
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+}
+
 .content {
   overflow-y: scroll;
   height: 100%;
@@ -82,6 +89,12 @@
   line-height: 1.2;
 }
 
+.display-8 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
 .single-stock .card, .portfolio .card {
   height: 300px;
 }
@@ -137,9 +150,11 @@
   .tweets {
     height: 600px !important;
   }
+
   .show-sentiment {
     height: 100%;
   }
+
   .tweets
 }
 
@@ -150,4 +165,23 @@
 .btn-primary {
   background-color: #02375f !important;
   border-color: #02375f !important;
+}
+
+.pt-250 {
+  padding-top: 250px;
+}
+
+.landing-header {
+  height: 850px;
+}
+
+.icon-steps {
+  height: 80px;
+  display: block;
+}
+
+img.testimonial {
+  height: 200px;
+  display: block;
+  border-radius: 50%;
 }
