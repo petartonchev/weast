@@ -1,11 +1,15 @@
 {% extends "base.html" %}
-{% block content %}
+{% block container %}
+  {{ block.super }}
   <div class="container">
     <div class="row home">
-      <div class="col-md-6 single-stock m-auto mt-5">
+      <div class="col-md-6 single-stock m-auto py-5">
         <div class="col-md-10 my-auto">
-          <h1 class="display-4 text-light text-center">Evaluate the sentiment of a stock</h1>
-          <div class="card small bg-light  shadow rounded mt-5 border-0">
+          <div class="py-5">
+            <h1 class="display-4 text-light text-center">Evaluate the sentiment of a stock</h1>
+          </div>
+
+          <div class="card small bg-light  shadow rounded border-0">
             <div class="card-header pt-3 border-0">
               <div class="lead text-dark ">Select a stock:</div>
 
@@ -22,21 +26,22 @@
 
         </div>
       </div>
-      <div class="col-md-6 text-center mt-5 m-auto portfolio align-middle">
+      <div class="col-md-6 text-center py-5 m-auto portfolio align-middle">
         <div class="col-md-10 float-right my-auto">
-          <div class="card small bg-light  shadow rounded-lg mb-5 border-0">
+          <div class="card small bg-light  shadow rounded-lg border-0">
             <div class="card-header pt-3 border-0">
               <div class="lead text-dark text-left align-middle">Create a portfolio:</div>
 
             </div>
-            <h1 class="display-4 text-muted text-center m-auto">Soon</h1>
+            <h1 class="display-4 text-muted text-center m-auto">Coming Soon</h1>
           </div>
 
-          <h1 class="display-4 text-light text-center">Check the overall sentiment of your portfolio</h1>
-
+          <div class="py-5">
+            <h1 class="display-4 text-light text-center">Check the overall sentiment of your portfolio</h1>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-{% endblock content %}
+{% endblock container%}

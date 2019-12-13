@@ -8,9 +8,10 @@ from django.views import defaults as default_views
 import stock_sentiment_web_app.sentiment.views as sentiment_views
 
 urlpatterns = [
-    path("", include("stock_sentiment_web_app.sentiment.urls")),
+    path("sentiment", include("stock_sentiment_web_app.sentiment.urls"), name='sentiment'),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
-    # Django Admin, use {% url 'admin:index' %}
+    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+                  # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     path(settings.ADMIN_URL+"/scrape", sentiment_views.scrape_data, name='scrape_data'),
     # User management

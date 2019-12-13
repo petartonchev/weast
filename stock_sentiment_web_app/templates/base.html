@@ -32,11 +32,11 @@
 
     {% endcompress %}
   {% endblock %}
-<script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
 
-<script src="https://code.highcharts.com/modules/bullet.js"></script>
+  <script src="https://code.highcharts.com/modules/bullet.js"></script>
 
-<script src="https://code.highcharts.com/modules/coloraxis.js"></script>
+  <script src="https://code.highcharts.com/modules/coloraxis.js"></script>
 
 </head>
 
@@ -56,7 +56,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-          <a class="nav-link" href="{% url 'sentiment:index' %}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item {% if request.path == '/sentiment/' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'sentiment:index' %}">Sentiment <span class="sr-only"></span></a>
         </li>
         <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
           <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -81,26 +84,29 @@
   </nav>
 
 </div>
-<div id="background">
-  <div class="content">
-    <div class="container-fluid">
 
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          </div>
-        {% endfor %}
-      {% endif %}
 
-      {% block content %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+        aria-hidden="true">&times;</span></button>
+    </div>
+  {% endfor %}
+{% endif %}
 
-      {% endblock content %}
+{% block content %}
 
-    </div> <!-- /container -->
+  <div id="background">
+    <div class="content">
+      <div class="container-fluid">
+        {% block container %}{% endblock %}
+
+      </div> <!-- /container -->
+    </div>
   </div>
-</div>
+
+{% endblock content %}
 
 
 {% block modal %}{% endblock modal %}
