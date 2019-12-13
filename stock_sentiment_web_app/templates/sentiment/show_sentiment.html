@@ -87,7 +87,7 @@
 
     document.onreadystatechange = function () {
       if (document.readyState == "interactive") {
-        visualizeCharts({{ sentiment }}, {{ sentiment_trend }}, "{{ stock.ticker }}");
+        visualizeCharts({{ sentiment|safe }}, {{ sentiment_trend }}, "{{ stock.ticker }}");
       }
     }
 
