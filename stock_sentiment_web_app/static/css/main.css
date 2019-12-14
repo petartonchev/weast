@@ -3,7 +3,7 @@
 }
 
 :root {
-  --primary-color: #55ADED;
+  --primary-color: #02375f;
   --accent-color: #FF9900;
 }
 
@@ -76,6 +76,9 @@
 .bg-accent {
   background-color: var(--accent-color) !important;
 }
+.bg-dark-color {
+  background-color: #021e3c;
+}
 
 .display-6 {
   font-size: 3rem;
@@ -104,7 +107,7 @@
 }
 
 .card-header {
-  background: linear-gradient(to bottom right, #f3df8e, #FF9900);
+  background-color: #02375f;
   height: 70px;
 }
 
@@ -184,4 +187,8 @@ img.testimonial {
   height: 200px;
   display: block;
   border-radius: 50%;
+}
+img.sign-up-photo {
+  height: 300px;
+
 }
