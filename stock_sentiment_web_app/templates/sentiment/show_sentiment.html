@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block content %}
+{% block container %}
+  {{ block.super }}
   <div class="row show-sentiment">
     <div class="col-md-6 pt-4 h-100">
       <div class="row h-100">
@@ -19,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12 pt-4 h-100-150px tweets">
+        <div class="col-md-12 pt-4 tweets">
           <div class="card h-100 small bg-light  shadow rounded border-0">
             {#          <div class="card-header border-0 pt-3 lead text-dark">#}
             {#            Tweets:#}
@@ -92,4 +93,4 @@
     }
 
   </script>
-{% endblock content %}
+{% endblock container %}
