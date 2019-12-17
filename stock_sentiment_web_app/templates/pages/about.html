@@ -1,1 +1,32 @@
 {% extends "base.html" %}
+{% block container %}
+{{ block.super }}
+  <div class="row">
+    <div class="col-md-12 float-center pt-5">
+      <div class="display-3 text-light text-center font-weight-bold">Welcome to MoodStock</div>
+    </div>
+    <div class="col-md-5 float-center p-5 offset-1">
+      <div class="display-7 text-light font-weight-light">What is MoodStock?</div>
+      <div class="lead text-light pt-3">MoodStock monitors Twitter activity relating to top companies stock and computes
+        the stock sentiment using state of the art machine learning technology.
+      </div>
+    </div>
+    <div class="col-md-5 float-center p-5">
+      <div class="display-7 text-light font-weight-light">How should I use MoodStock?</div>
+      <div class="lead text-light pt-3">Select the stock you are interested in using and view the sentiment of your selected stock or portfolio.
+      </div>
+    </div>
+    <div class="col-md-5 float-center p-5 offset-1">
+      <div class="display-7 text-light font-weight-light">Is MoodStock free?</div>
+      <div class="lead text-light pt-3">For now MoodStock is 100% free!
+      </div>
+    </div>
+    <div class="col-md-5 float-center p-5">
+      <div class="display-7 text-light font-weight-light">Who are the creators of MoodStock?</div>
+      <div class="lead text-light pt-3">We are a team of Data Scientists, Analysts and Domain experts who met in the
+        University of Barcelona Masters in Foundations of Data Science.
+      </div>
+    </div>
+  </div>
+
+{% endblock container %}

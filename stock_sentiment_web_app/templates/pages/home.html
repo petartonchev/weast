@@ -1,1 +1,116 @@
 {% extends "base.html" %}
+{% block content %}
+  <div id="hp-bg">
+    <div class="container-fluid">
+      <div class="col-md-4 offset-md-7 col-sm-12 pt-250 landing-header">
+        <div class="p-3 m-auto">
+          <h1 class="display-4 text-dark text-center">Discover the sentiment of your favourite stocks with
+            MoodStock</h1>
+        </div>
+        <div class="p-3 m-auto">
+          <a class="btn btn-primary btn-block" href="{% url 'sentiment:index' %}"><h1 class="display-8">Try it
+            here</h1></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="p-5 m-auto">
+        <h1 class="display-4 text-dark text-center">How does it work?</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-4 p-3">
+          <img src="/static/images/algorithm.svg" alt="" class="icon-steps m-auto">
+          <div class="text-muted text-center py-4 px-5">
+            <h1 class="lead">Accurate sentiment analysis using deep learning algorithms</h1>
+          </div>
+        </div>
+        <div class="col-md-4  p-3">
+          <img src="/static/images/sentiment.svg" alt="" class="icon-steps m-auto">
+          <div class="text-muted text-center py-4 px-5">
+            <h1 class="lead">Easily monitor the sentiment of your stocks</h1>
+          </div>
+
+        </div>
+        <div class="col-md-4 p-3">
+          <img src="/static/images/metrics.svg" alt="" class="icon-steps m-auto">
+          <div class="text-muted text-center py-4 px-5">
+            <h1 class="lead">Visualize the sentiment trends against stock prices</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 p-5">
+      <div class="col-md-12">
+        <div class="p-5 m-auto d-none d-sm-block">
+          <h1 class="display-4 text-dark text-center">Testimonials</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/static/images/testimonial-person.jpg" alt="" class="testimonial m-auto">
+          </div>
+          <div class="col-md-8">
+            <div class="text-muted align-middle text-left p-5">
+              <blockquote class="blockquote text-center pt-3">
+                <p class="mb-0">I was always looking for a way to analyse the sentiment of my stocks. With MoodStock
+                  this is easy!</p>
+                <footer class="blockquote-footer">Osman Deger
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{#    <div class="col-md-12 p-5">#}
+{#      <div class="col-md-12">#}
+{#        <div class="p-5 m-auto">#}
+{#          <h1 class="display-4 text-dark text-center">Sign Up</h1>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#          <div class="col-md-6 ">#}
+{#            <div class="text-muted text-center py-4 px-5">#}
+{#              <h1 class="display-8">Want to stay up to date on the latest features?</h1>#}
+{#            </div>#}
+{#            <div class="p-3 px-5 align-bottom m-auto">#}
+{#              <a class="btn btn-primary btn-block" href="{% url 'account_signup' %}"><h1 class="lead">Sign Up Now</h1>#}
+{#              </a>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-md-6">#}
+{#            <img src="/static/images/sign-up.jpg" alt="" class="block m-auto sign-up-photo">#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer font-small text-light bg-primary pt-4">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+      <!-- Call to action -->
+      <ul class="list-unstyled list-inline text-center py-2">
+        <li class="list-inline-item px-2">
+          <h5 class="lead">Want to stay up to date on the latest features?</h5>
+        </li>
+        <li class="list-inline-item mb-1">
+          <a href="{% url 'account_signup' %}" class="btn btn-outline-light text-light btn-rounded">Sign Up Now</a>
+        </li>
+      </ul>
+      <!-- Call to action -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 bg-dark-color">Copyright © 2019 Moodstock</div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+{% endblock %}
+

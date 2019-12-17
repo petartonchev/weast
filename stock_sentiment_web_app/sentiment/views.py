@@ -8,6 +8,7 @@ from .services import Statistics
 
 
 # Create your views here.
+
 def index(request):
     stocks = Stock.objects.all()
     sectors = IndustrySector.objects.all()
