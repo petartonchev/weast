@@ -13,7 +13,7 @@ env = environ.Env()
 class TwitterScraper:
 
     def __init__(self):
-        self.NUM_TWEETS_PER_FETCH = 10
+        self.NUM_TWEETS_PER_FETCH = 100
         self.ANALYSER_API = 'https://api-moodstock.herokuapp.com'
         self.stocks = Stock.objects.all()
         self.twitter = self.connect_to_api()
