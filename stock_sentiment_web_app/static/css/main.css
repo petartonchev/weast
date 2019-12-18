@@ -76,6 +76,7 @@
 .bg-accent {
   background-color: var(--accent-color) !important;
 }
+
 .bg-dark-color {
   background-color: #021e3c;
 }
@@ -188,7 +189,15 @@ img.testimonial {
   display: block;
   border-radius: 50%;
 }
+
 img.sign-up-photo {
   height: 300px;
 
+}
+
+#sectors-map {
+  height: calc(100% - 70px);
+  width: 100%;
+  bottom:0
+  position: absolute;
 }

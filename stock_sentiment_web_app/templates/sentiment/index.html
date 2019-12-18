@@ -28,20 +28,55 @@
       </div>
       <div class="col-md-6 text-center py-5 m-auto portfolio align-middle">
         <div class="col-md-10 float-right my-auto">
-          <div class="card small bg-light  shadow rounded-lg border-0">
+          <div class="card small bg-light  shadow rounded border-0">
             <div class="card-header pt-3 border-0">
-              <div class="lead text-light text-left align-middle">Create a portfolio:</div>
+              <div class="lead text-light text-left align-middle">Sentiment by Sector:</div>
 
             </div>
-            <h1 class="display-4 text-muted text-center m-auto">Coming Soon</h1>
+                <div id="sectors-map" class=" rounded"></div>
+
           </div>
 
           <div class="py-5">
-            <h1 class="display-4 text-light text-center">Check the overall sentiment of your portfolio</h1>
+            <h1 class="display-4 text-light text-center">Explore stocks sentiment by sector</h1>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
+  <script>
+
+    Highcharts.chart('sectors-map', {
+      series: [{
+        type: 'treemap',
+        layoutAlgorithm: 'squarified',
+        allowDrillToNode: true,
+        animationLimit: 1000,
+        dataLabels: {
+          enabled: false
+        },
+        levelIsConstant: false,
+        levels: [{
+          level: 1,
+          dataLabels: {
+            enabled: true,
+            style: {
+                fontSize: '20px',
+                color: '#fff',
+                fontWeight: 'bold',
+                textOutline: 0
+            }
+          },
+          borderWidth: 3
+        }],
+        data: {{ sector_tree | safe }}
+      }],
+      subtitle: null,
+      title: null
+    });
+
+  </script>
 
 {% endblock container%}

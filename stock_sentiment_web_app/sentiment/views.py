@@ -24,7 +24,8 @@ def index(request):
         node = {
             "name": sector.name,
             "value": summary.avg_sentiment,
-            "id": sector.id
+            "id": str(sector.id),
+            "color": '#F60239' if summary.avg_sentiment < 0 else '#4c9d49'
         }
         tree.append(node)
 
@@ -32,7 +33,8 @@ def index(request):
         node = {
             "name": stock.ticker,
             "value": stock.stocksummary_set.latest('date').avg_sentiment,
-            "parent": stock.sector_id
+            "parent": str(stock.sector_id),
+            "color": '#F60239' if stock.stocksummary_set.latest('date').avg_sentiment < 0 else '#4c9d49'
         }
         tree.append(node)
 
@@ -54,7 +56,6 @@ def get_stock_sentiment(request, stock_id):
     }
 
     return render(request, 'sentiment/show_sentiment.html', context)
-
 
 @superuser_only
 def scrape_data(request):
