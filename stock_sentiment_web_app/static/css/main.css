@@ -204,3 +204,9 @@ img.sign-up-photo {
   bottom:0
   position: absolute;
 }
+.badge-success {
+  background-color: #4c9d49;
+}
+.badge-danger {
+  background-color: #f60239;
+}

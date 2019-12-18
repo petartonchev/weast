@@ -22,17 +22,20 @@
         </div>
         <div class="col-md-12 pt-4 tweets">
           <div class="card h-100 small bg-light  shadow rounded border-0">
-            {#          <div class="card-header border-0 pt-3 lead text-dark">#}
-            {#            Tweets:#}
-            {#          </div>#}
             <div class="card-body h-100">
-              {% for tweet in tweets|dictsortreversed:"retweets" %}
+              {% for tweet in tweets %}
                 <div class="row ">
                   <div class="col-md-6">
                     <p class="lead text-muted">{{ tweet.username|capfirst }}</p>
                   </div>
                   <div class="col-md-6">
-                    <p class="text-muted float-right info">Sentiment: {{ tweet.sentiment|floatformat:"2" }}</p>
+                    <h6 class="float-right info">
+                      {% if tweet.sentiment == 1 %}
+                      <span class="badge badge-success">Positive</span>
+                        {% else %}
+                      <span class="badge badge-danger">Negative</span>
+                      {% endif %}
+                    </h6>
                   </div>
                   <div class="col-md-12 pb-2">
                     {{ tweet.text }}
