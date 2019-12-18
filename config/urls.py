@@ -8,7 +8,7 @@ from django.views import defaults as default_views
 import stock_sentiment_web_app.sentiment.views as sentiment_views
 
 urlpatterns = [
-    path("sentiment", include("stock_sentiment_web_app.sentiment.urls"), name='sentiment'),
+    path("sentiment/", include("stock_sentiment_web_app.sentiment.urls"), name='sentiment'),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
                   # Django Admin, use {% url 'admin:index' %}
