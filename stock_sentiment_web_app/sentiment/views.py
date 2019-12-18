@@ -49,7 +49,7 @@ def get_stock_sentiment(request, stock_id):
     sentiment_trend = Statistics.get_sentiment_trend(stock)
 
     context = {
-        'sentiment': round(stock_summary.avg_sentiment,),
+        'sentiment': round(stock_summary.avg_sentiment, 2),
         'stock': stock,
         'tweets': tweets,
         'sentiment_trend': sentiment_trend
