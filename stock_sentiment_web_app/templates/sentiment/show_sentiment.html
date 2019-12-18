@@ -23,7 +23,7 @@
         <div class="col-md-12 pt-4 tweets">
           <div class="card h-100 small bg-light  shadow rounded border-0">
             <div class="card-body h-100">
-              {% for tweet in tweets %}
+              {% for tweet in tweets|dictsortreversed:"created_at"%}
                 <div class="row ">
                   <div class="col-md-6">
                     <p class="lead text-muted">{{ tweet.username|capfirst }}</p>
