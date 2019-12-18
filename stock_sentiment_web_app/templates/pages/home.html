@@ -19,6 +19,10 @@
       <div class="p-5 m-auto">
         <h1 class="display-4 text-dark text-center">How does it work?</h1>
       </div>
+      <div class="col-md-10 m-auto">
+        <h1 class="lead text-center pb-4">Using MoodStock you will be able to explore the stocks sentiment from twitter users. This
+          sentiment is calculated based on tweets which predict whether the stock price will move up or down.</h1>
+      </div>
       <div class="row">
         <div class="col-md-4 p-3">
           <img src="/static/images/algorithm.svg" alt="" class="icon-steps m-auto">
@@ -41,6 +45,54 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-12 p-5">
+      <div class="col-md-12">
+        <div class="p-5 m-auto">
+          <h1 class="display-4 text-dark text-center">Sentiment by Industry Sector</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="/static/images/sectors.jpg" alt="" class="block m-auto sign-up-photo">
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 px-5 align-bottom m-auto">
+              <h1 class="display-8 text-center">With MoodStock you are able to explore the sentiment of the stocks by
+                industry sector using our intuitive chart</h1>
+            </div>
+            <div class="px-5">
+              <a class="btn btn-primary btn-block" href="{% url 'sentiment:index' %}"><h1 class="lead  ">Try it
+                here</h1></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 p-5">
+      <div class="col-md-12">
+        <div class="p-5 m-auto">
+          <h1 class="display-4 text-dark text-center">Portfolio Creation</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-6 ">
+            <div class="text-muted text-center py-4 px-5">
+              <h1 class="display-4">Coming soon!</h1>
+            </div>
+            <div class="p-4 px-5 align-bottom m-auto">
+              <h1 class="display-8  text-center">Very soon you will be able to create a portfolio and explore its
+                overall
+                sentiment</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img src="/static/images/portfolios.jpg" alt="" class="block m-auto sign-up-photo">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-12 p-5">
       <div class="col-md-12">
         <div class="p-5 m-auto d-none d-sm-block">
@@ -63,27 +115,6 @@
         </div>
       </div>
     </div>
-{#    <div class="col-md-12 p-5">#}
-{#      <div class="col-md-12">#}
-{#        <div class="p-5 m-auto">#}
-{#          <h1 class="display-4 text-dark text-center">Sign Up</h1>#}
-{#        </div>#}
-{#        <div class="row">#}
-{#          <div class="col-md-6 ">#}
-{#            <div class="text-muted text-center py-4 px-5">#}
-{#              <h1 class="display-8">Want to stay up to date on the latest features?</h1>#}
-{#            </div>#}
-{#            <div class="p-3 px-5 align-bottom m-auto">#}
-{#              <a class="btn btn-primary btn-block" href="{% url 'account_signup' %}"><h1 class="lead">Sign Up Now</h1>#}
-{#              </a>#}
-{#            </div>#}
-{#          </div>#}
-{#          <div class="col-md-6">#}
-{#            <img src="/static/images/sign-up.jpg" alt="" class="block m-auto sign-up-photo">#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
 
   </div>
   <!-- Footer -->
