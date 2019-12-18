@@ -43,10 +43,9 @@ class TwitterScraper:
                                    tweet_mode="extended"
                                    ).items(self.NUM_TWEETS_PER_FETCH):
 
-
             is_relevant, sentiment = self.filter_analyse_tweet(tweet.full_text)
-            # Save only if relevant
-            if is_relevant:
+            # Save only if relevant and has sentiment
+            if is_relevant and sentiment is not None:
                 tweet_data = {
                     'text': tweet.full_text,
                     'tweet_id': tweet.id_str,
@@ -58,7 +57,6 @@ class TwitterScraper:
 
                 corresponding_stocks = self.get_stocks_from_tweet_symbols(tweet.entities['symbols'])
                 self.save_tweet(corresponding_stocks, tweet_data)
-
 
     def get_stocks_from_tweet_symbols(self, symbols):
         # get the text of the symbols only
