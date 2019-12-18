@@ -23,7 +23,7 @@ def index(request):
 
         node = {
             "name": sector.name,
-            "value": summary.avg_sentiment,
+            "value": round(summary.avg_sentiment,2),
             "id": str(sector.id),
             "color": '#F60239' if summary.avg_sentiment < 0 else '#4c9d49'
         }
@@ -32,7 +32,7 @@ def index(request):
     for stock in stocks:
         node = {
             "name": stock.ticker,
-            "value": stock.stocksummary_set.latest('date').avg_sentiment,
+            "value": round(stock.stocksummary_set.latest('date').avg_sentiment,2),
             "parent": str(stock.sector_id),
             "color": '#F60239' if stock.stocksummary_set.latest('date').avg_sentiment < 0 else '#4c9d49'
         }
@@ -49,7 +49,7 @@ def get_stock_sentiment(request, stock_id):
     sentiment_trend = Statistics.get_sentiment_trend(stock)
 
     context = {
-        'sentiment': stock_summary.avg_sentiment,
+        'sentiment': round(stock_summary.avg_sentiment,),
         'stock': stock,
         'tweets': tweets,
         'sentiment_trend': sentiment_trend

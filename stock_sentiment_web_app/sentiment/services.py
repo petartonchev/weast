@@ -15,6 +15,6 @@ class Statistics:
             date, sentiment = daily_summary
             # Convert to timestamp in milliseconds
             timestamp = int(timezone.datetime.timestamp(date) * 1000)
-            return [timestamp, sentiment]
+            return [timestamp, round(sentiment, 2)]
 
         return list(map(convert_date_to_timestamp, sentiment_trend))
