@@ -81,11 +81,14 @@ class TwitterScraper:
             pass
 
     def filter_analyse_tweet(self, full_text):
-        response = requests.post(self.ANALYSER_API + '/filter-predict', json={"tweet": full_text}, timeout=30.0)
+        try:
+            response = requests.post(self.ANALYSER_API + '/filter-predict', json={"tweet": full_text}, timeout=30.0)
 
-        if response.ok:
-            print(response.json())
-            result = response.json()
-            return result['relevant'], result['sentiment']
-        else:
+            if response.ok:
+                print(response.json())
+                result = response.json()
+                return result['relevant'], result['sentiment']
+            else:
+                return False, None
+        except:
             return False, None
