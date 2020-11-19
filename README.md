@@ -1,6 +1,8 @@
 # MoodStock
 A web application showing the sentiment of stocks based on twitter posts.
 
+Deployed at https://moodstock.herokuapp.com
+
 ## Quickstart
 To setup the project:
 
